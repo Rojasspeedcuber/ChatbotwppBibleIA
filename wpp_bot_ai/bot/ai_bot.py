@@ -52,13 +52,6 @@ class AIBot:
         return messages
 
     def invoke(self, history_messages, question):
-        """
-        Processa a interação do usuário com base no histórico de mensagens e na pergunta atual.
-
-        :param history_messages: Histórico de mensagens do usuário.
-        :param question: Pergunta atual do usuário.
-        :return: Resposta gerada pela IA.
-        """
         SYSTEM_TEMPLATE = '''
         Responda as perguntas dos usuários com base perguntas sobre a bíblia abaixo.
         Você é um chatbot especializado na Bíblia Sagrada, capaz de responder perguntas sobre seu conteúdo, interpretação e contexto histórico, cultural e espiritual.
@@ -88,17 +81,23 @@ class AIBot:
 
         Leve em consideração também o histórico de mensagens da conversa com o usuário.
         Responda sempre em português brasileiro.
-        
+
+        <context>
+        {context}
+        </context>
         '''
 
         # Recupera os documentos relacionados à pergunta
         docs = self.__retriever.invoke(question)
 
         # Configura o prompt para o modelo
-        question_answering_prompt = ChatPromptTemplate.from_messages([
-            ('system', SYSTEM_TEMPLATE),
-            MessagesPlaceholder(variable_name='messages'),
-        ])
+        question_answering_prompt = ChatPromptTemplate.from_messages(
+            [
+                ('system', SYSTEM_TEMPLATE),
+                MessagesPlaceholder(variable_name='messages'),
+
+            ]
+        )
 
         # Cria o pipeline de processamento de documentos e respostas
         document_chain = create_stuff_documents_chain(
