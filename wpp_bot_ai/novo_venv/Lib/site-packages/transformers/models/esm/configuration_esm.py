@@ -87,14 +87,11 @@ class EsmConfig(PretrainedConfig):
     ```python
     >>> from transformers import EsmModel, EsmConfig
 
-    >>> # Initializing a ESM facebook/esm-1b style configuration
-    >>> configuration = EsmConfig(vocab_size=33)
+    >>> # Initializing a ESM facebook/esm-1b style configuration >>> configuration = EsmConfig()
 
-    >>> # Initializing a model from the configuration
-    >>> model = EsmModel(configuration)
+    >>> # Initializing a model from the configuration >>> model = ESMModel(configuration)
 
-    >>> # Accessing the model configuration
-    >>> configuration = model.config
+    >>> # Accessing the model configuration >>> configuration = model.config
     ```"""
 
     model_type = "esm"

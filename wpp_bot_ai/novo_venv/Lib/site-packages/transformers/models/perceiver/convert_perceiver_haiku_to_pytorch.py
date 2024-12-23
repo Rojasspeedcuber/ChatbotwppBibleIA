@@ -444,8 +444,7 @@ if __name__ == "__main__":
         type=str,
         default=None,
         required=True,
-        help="Path to local pickle file of a Perceiver checkpoint you'd like to convert.\n"
-        "Given the files are in the pickle format, please be wary of passing it files you trust.",
+        help="Path to local pickle file of a Perceiver checkpoint you'd like to convert.",
     )
     parser.add_argument(
         "--pytorch_dump_folder_path",

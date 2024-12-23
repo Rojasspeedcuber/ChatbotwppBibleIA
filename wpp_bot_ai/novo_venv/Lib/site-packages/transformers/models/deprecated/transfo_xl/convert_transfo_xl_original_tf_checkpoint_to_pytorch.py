@@ -109,8 +109,7 @@ if __name__ == "__main__":
         "--transfo_xl_dataset_file",
         default="",
         type=str,
-        help="An optional dataset file to be converted in a vocabulary.\n"
-        "Given the files are in the pickle format, please be wary of passing it files you trust.",
+        help="An optional dataset file to be converted in a vocabulary.",
     )
     args = parser.parse_args()
     convert_transfo_xl_checkpoint_to_pytorch(

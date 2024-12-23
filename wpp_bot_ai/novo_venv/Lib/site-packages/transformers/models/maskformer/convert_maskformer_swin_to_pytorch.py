@@ -317,8 +317,7 @@ if __name__ == "__main__":
         "--checkpoint_path",
         default="/Users/nielsrogge/Documents/MaskFormer_checkpoints/MaskFormer-Swin-tiny-ADE20k/model.pkl",
         type=str,
-        help="Path to the original state dict (.pth file).\n"
-        "Given the files are in the pickle format, please be wary of passing it files you trust.",
+        help="Path to the original state dict (.pth file).",
     )
     parser.add_argument(
         "--pytorch_dump_folder_path", default=None, type=str, help="Path to the output PyTorch model directory."
