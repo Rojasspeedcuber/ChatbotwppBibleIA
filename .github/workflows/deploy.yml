@@ -1,0 +1,25 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIA5CBGTJGRDLJDA5SX
+          aws-secret-access-key: 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
+          aws-region: us-east-1
+          
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./public s3://your-bucket-name --delete
