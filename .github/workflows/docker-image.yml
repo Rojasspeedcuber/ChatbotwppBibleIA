@@ -1,0 +1,29 @@
+name: Build and Push Docker image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ henriquerojas }}
+          password: ${{ dckr_pat_2cZfQg8m0Y6LpWuYIJXi94AIs4Q }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t ghcr.io/${{ ChatbotwppBibleIA }}/wpp_bot_ai-api:latest .
+          
+      - name: Push Docker image
+        run: |
+          docker push ghcr.io/${{ ChatbotwppBibleIA }}/wpp_bot_ai-api:latest
+
