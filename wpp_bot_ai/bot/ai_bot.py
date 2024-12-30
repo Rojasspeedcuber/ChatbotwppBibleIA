@@ -9,6 +9,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 # Configura as chaves de API
 os.environ['GROQ_API_KEY'] = config('GROQ_API_KEY')
+os.environ['HUGGINGFACE_API_KEY'] = config('HUGGINGFACE_API_KEY')
 
 
 class AIBot:
