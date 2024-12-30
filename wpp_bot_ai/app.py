@@ -31,14 +31,14 @@ def webhook():
         limit=10,
     )
 
+    waha.stop_typing(chat_id=chat_id)
+
     ai_bot = AIBot()
 
     response_message = ai_bot.invoke(
         history_messages=history_messages,
         question=received_message,
     )
-
-    waha.stop_typing(chat_id=chat_id)
 
     time.sleep(2.5)
 
