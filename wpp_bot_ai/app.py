@@ -18,7 +18,6 @@ def webhook():
         return jsonify({'status': 'success', 'message': 'Mensagem de grupo ignorada.'}), 200
 
     waha = Waha()
-    ai_bot = AIBot()
 
     waha.start_typing(chat_id=chat_id)
 
@@ -32,6 +31,8 @@ def webhook():
     waha.stop_typing()
 
     time.sleep(2.5)
+
+    ai_bot = AIBot()
 
     history_messages = waha.get_history_messages(
         chat_id=chat_id,
