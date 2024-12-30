@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
-import time
 from bot.ai_bot import AIBot
 from services.waha import Waha
+import time
 
 app = Flask(__name__)
 
@@ -18,19 +18,11 @@ def webhook():
         return jsonify({'status': 'success', 'message': 'Mensagem de grupo ignorada.'}), 200
 
     waha = Waha()
+    ai_bot = AIBot()
 
     waha.start_typing(chat_id=chat_id)
 
     time.sleep(2.5)
-
-    waha.send_message(
-        chat_id=chat_id,
-        message='Olá! Sou o ChatBot Gênesis. Fui criado pela inspiração de Deus na vida de um estudante de Ciência da Computação. Utilizo Inteligência Artificial para ajudá-lo a conhecer os ensinamentos bíblicos. Você tem alguma pergunta específica ou gostaria de explorar um tema em particular? Estou aqui para ajudar!',
-    )
-
-    waha.stop_typing(chat_id=chat_id)
-
-    ai_bot = AIBot()
 
     history_messages = waha.get_history_messages(
         chat_id=chat_id,
@@ -41,10 +33,6 @@ def webhook():
         history_messages=history_messages,
         question=received_message,
     )
-
-    time.sleep(2.5)
-
-    waha.start_typing(chat_id=chat_id)
 
     waha.send_message(
         chat_id=chat_id,
