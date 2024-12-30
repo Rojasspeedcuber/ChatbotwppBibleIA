@@ -23,11 +23,6 @@ def webhook():
 
     time.sleep(2.5)
 
-    history_messages = waha.get_history_messages(
-        chat_id=chat_id,
-        limit=10,
-    )
-
     waha.send_message(
         chat_id=chat_id,
         message='Olá! Sou o ChatBot Gênesis. Fui criado pela inspiração de Deus na vida de um estudante de Ciência da Computação. Utilizo Inteligência Artificial para ajudá-lo a conhecer os ensinamentos bíblicos. Você tem alguma pergunta específica ou gostaria de explorar um tema em particular? Estou aqui para ajudar!',
@@ -36,6 +31,11 @@ def webhook():
     waha.stop_typing(chat_id=chat_id)
 
     ai_bot = AIBot()
+
+    history_messages = waha.get_history_messages(
+        chat_id=chat_id,
+        limit=10,
+    )
 
     response_message = ai_bot.invoke(
         history_messages=history_messages,
