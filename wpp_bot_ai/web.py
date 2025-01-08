@@ -2,14 +2,14 @@ import os
 import streamlit as st
 from langchain import hub
 from decouple import config
-from langchain_groq import ChatGroq
+from langchain_huggingface import ChatHuggingFace
 from langchain.agents import create_react_agent, AgentExecutor
 from langchain.prompts import PromptTemplate
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 
 
-os.environ['GROQ_API_KEY'] = config('GROQ_API_KEY')
+os.environ['HUGGINGFACE_API_KEY'] = config('HUGGINGFACE_API_KEY')
 
 st.set_page_config(
     page_title='Bible AI',
@@ -54,7 +54,7 @@ if 'messages' not in st.session_state:
 
 user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
-model = ChatGroq(
+model = ChatHuggingFace(
     model=selected_box,
 )
 
