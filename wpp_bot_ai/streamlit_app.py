@@ -19,8 +19,8 @@ st.set_page_config(
 st.header('Chatbot Gênesis')
 
 model_options = [
-    'llama-3.3-70b-versatile',
-    'llama-3.1-8b-instant',
+    'meta-llama/Llama-3.3-70B-Instruct',
+    'meta-llama/Llama-3.2-3B-Instruct',
 ]
 
 bible_options = [
