@@ -55,7 +55,7 @@ if 'messages' not in st.session_state:
 user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
 model = ChatHuggingFace(
-    llm={'model': f'{model_options}'}
+    llm=f'{selected_box}'
 )
 
 
