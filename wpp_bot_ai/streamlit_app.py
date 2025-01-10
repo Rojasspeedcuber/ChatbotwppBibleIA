@@ -2,6 +2,7 @@ import os
 import streamlit as st
 from langchain import hub
 from decouple import config
+from transformers import AutoModel
 from langchain_community.llms import HuggingFaceHub
 from langchain_huggingface import ChatHuggingFace
 from langchain.agents import create_react_agent, AgentExecutor
@@ -40,6 +41,9 @@ selected_box = st.sidebar.selectbox(
     label='Selecione o modelo LLM',
     options=model_options,
 )
+
+model = AutoModel.from_pretrained(
+    f'{selected_box}', use_auth_token='HUGGINGFACE_API_KEY')
 
 llm = HuggingFaceHub(
     repo_id=f'{selected_box}',
