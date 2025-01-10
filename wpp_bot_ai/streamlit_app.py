@@ -46,7 +46,7 @@ model = AutoModel.from_pretrained(
     f'{selected_box}', use_auth_token='HUGGINGFACE_API_KEY')
 
 llm = HuggingFaceHub(
-    repo_id=f'{selected_box}',
+    repo_id=model,
     huggingfacehub_api_token=f'{'HUGGINGFACE_API_KEY'}',
 )
 
