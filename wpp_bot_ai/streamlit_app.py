@@ -2,6 +2,7 @@ import os
 import streamlit as st
 from langchain import hub
 from decouple import config
+from langchain_community.llms import HuggingFaceHub
 from langchain_huggingface import ChatHuggingFace
 from langchain.agents import create_react_agent, AgentExecutor
 from langchain.prompts import PromptTemplate
@@ -40,6 +41,10 @@ selected_box = st.sidebar.selectbox(
     options=model_options,
 )
 
+llm = HuggingFaceHub(
+    model=f'{selected_box}'
+)
+
 selected_bible = st.sidebar.selectbox(
     label='Selecione a versão da base de dados',
     options=bible_options,
@@ -55,7 +60,7 @@ if 'messages' not in st.session_state:
 user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
 model = ChatHuggingFace(
-    llm=f'{selected_box}'
+    llm=llm
 )
 
 
