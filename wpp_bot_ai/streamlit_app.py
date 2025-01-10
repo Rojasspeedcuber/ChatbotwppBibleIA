@@ -42,8 +42,8 @@ selected_box = st.sidebar.selectbox(
 )
 
 llm = HuggingFaceHub(
-    model=f'{selected_box}',
-    huggingfacehub_api_token=f'{'HUGGINGFACE_API_KEY'}',
+    repo_id=f'{selected_box}',
+    huggingfacehub_api_token=os.environ['HUGGINGFACE_API_KEY'],
 )
 
 selected_bible = st.sidebar.selectbox(
