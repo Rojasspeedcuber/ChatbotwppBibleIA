@@ -2,16 +2,14 @@ import os
 import streamlit as st
 from langchain import hub
 from decouple import config
-from transformers import AutoModel
-from langchain_community.llms import HuggingFaceHub
-from langchain_huggingface import ChatHuggingFace
+from langchain_groq import ChatGroq
 from langchain.agents import create_react_agent, AgentExecutor
 from langchain.prompts import PromptTemplate
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 
 
-os.environ['HUGGINGFACE_API_KEY'] = config('HUGGINGFACE_API_KEY')
+os.environ['GROQ_API_KEY'] = config('GROQ_API_KEY')
 
 st.set_page_config(
     page_title='Bible AI',
@@ -21,8 +19,8 @@ st.set_page_config(
 st.header('Chatbot Gênesis')
 
 model_options = [
-    'meta-llama/Llama-3.3-70B-Instruct',
-    'meta-llama/Llama-3.2-3B-Instruct',
+    'llama-3.3-70b-versatile',
+    'llama-3.1-8b-instant',
 ]
 
 bible_options = [
@@ -42,14 +40,6 @@ selected_box = st.sidebar.selectbox(
     options=model_options,
 )
 
-model = AutoModel.from_pretrained(
-    f'{selected_box}', use_auth_token='HUGGINGFACE_API_KEY')
-
-llm = HuggingFaceHub(
-    repo_id=model,
-    huggingfacehub_api_token=f'{'HUGGINGFACE_API_KEY'}',
-)
-
 selected_bible = st.sidebar.selectbox(
     label='Selecione a versão da base de dados',
     options=bible_options,
@@ -64,8 +54,8 @@ if 'messages' not in st.session_state:
 
 user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
-model = ChatHuggingFace(
-    llm=llm
+model = ChatGroq(
+    model=selected_box
 )
 
 
