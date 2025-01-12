@@ -59,7 +59,7 @@ model = ChatGroq(
 )
 
 
-db = SQLDatabase.from_uri(f'sqlite:///databases/{selected_bible}.sqlite')
+db = SQLDatabase.from_uri(f'sqlite:///databases/{selected_bible}.db')
 
 toolkit = SQLDatabaseToolkit(
     db=db,
