@@ -2,24 +2,27 @@ import os
 import streamlit as st
 from decouple import config
 from langchain import hub
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from langchain.agents import create_react_agent, AgentExecutor
 from langchain.prompts import PromptTemplate
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
+
+os.environ['OPENAI_API_KEY'] = config('OPENAI_API_KEY')
 
 st.set_page_config(
     page_title='Bible AI',
     page_icon='biblia.png'
 )
 
-os.environ['GROQ_API_KEY'] = config('GROQ_API_KEY')
-
 st.header('Chatbot Gênesis')
 
 model_options = [
-    'llama-3.3-70b-versatile',
-    'llama-3.1-8b-instant',
+    'gpt-3.5-turbo',
+    'gpt-4',
+    'gpt-4-turbo',
+    'gpt-4o-mini',
+    'gpt-4o',
 ]
 
 bible_options = [
@@ -53,8 +56,9 @@ if 'messages' not in st.session_state:
 
 user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
-model = ChatGroq(
-    model=selected_box
+model = ChatOpenAI(
+    model=selected_box,
+    max_completion_tokens=400,
 )
 
 
