@@ -82,7 +82,6 @@ agent_executor = AgentExecutor(
     agent=agent,
     tools=toolkit.get_tools(),
     verbose=True,
-    handle_parsing_errors=True
 )
 
 prompt = '''
@@ -127,4 +126,4 @@ if user_question:
     with st.spinner('Buscando resposta...'):
         formatted_prompt = prompt_template.format(q=user_question)
         output = agent_executor.invoke({'input': formatted_prompt})
-        st.markdown(output.get('output'))
+        output.get('output')
