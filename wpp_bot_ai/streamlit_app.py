@@ -126,4 +126,4 @@ if user_question:
     with st.spinner('Buscando resposta...'):
         formatted_prompt = prompt_template.format(q=user_question)
         output = agent_executor.invoke({'input': formatted_prompt})
-        output.get('output')
+        st.markdown(output.get('output'))
