@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from decouple import config
 from langchain import hub
 from langchain_groq import ChatGroq
 from langchain.agents import create_react_agent, AgentExecutor
@@ -12,7 +13,7 @@ st.set_page_config(
     page_icon='biblia.png'
 )
 
-os.environ['GROQ_API_KEY']
+os.environ['GROQ_API_KEY'] = config('GROQ_API_KEY')
 
 st.header('Chatbot Gênesis')
 
