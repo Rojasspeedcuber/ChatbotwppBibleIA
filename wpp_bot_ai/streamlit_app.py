@@ -7,13 +7,12 @@ from langchain.prompts import PromptTemplate
 from langchain_community.utilities.sql_database import SQLDatabase
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 
-
-os.environ['GROQ_API_KEY']
-
 st.set_page_config(
     page_title='Bible AI',
     page_icon='biblia.png'
 )
+
+os.environ['GROQ_API_KEY']
 
 st.header('Chatbot Gênesis')
 
