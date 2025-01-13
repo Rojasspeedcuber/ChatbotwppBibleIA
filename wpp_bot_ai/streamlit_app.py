@@ -58,7 +58,7 @@ user_question = st.chat_input('O que deseja saber sobre a Bíblia?')
 
 model = ChatOpenAI(
     model=selected_box,
-    max_completion_tokens=400,
+    max_completion_tokens=1000,
 )
 
 
