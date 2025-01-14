@@ -80,7 +80,6 @@ agent = create_react_agent(
 agent_executor = AgentExecutor(
     agent=agent,
     tools=toolkit.get_tools(),
-    verbose=True,
     handle_parsing_errors=True,
 )
 
