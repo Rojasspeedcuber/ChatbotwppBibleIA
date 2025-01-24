@@ -10,7 +10,7 @@ services:
 
   api:
     build: 
-      context: .
+      context: wpp_bot_ai
       dockerfile: Dockerfile.api
     container_name: wpp_bot_api
     ports:
