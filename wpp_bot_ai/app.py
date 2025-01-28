@@ -6,7 +6,7 @@ import time
 app = Flask(__name__)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def webhook():
 
     data = request.json
