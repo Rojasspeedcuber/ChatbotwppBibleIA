@@ -3,7 +3,7 @@ RUN apt update && apt install -y sqlite3 libsqlite3-dev
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /app
+WORKDIR /wpp_bot_ai
 
 COPY wpp_bot_ai/requirements.txt .
 RUN python -m pip install --upgrade pip
