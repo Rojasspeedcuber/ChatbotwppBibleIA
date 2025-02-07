@@ -11,7 +11,7 @@ services:
   api:
     build: 
       context: .
-      dockerfile: Dockerfile.api
+      dockerfile: wpp_bot_ai/Dockerfile.api
     container_name: wpp_bot_api
     ports:
       - '5000:5000'
