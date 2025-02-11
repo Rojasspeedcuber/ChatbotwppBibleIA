@@ -6,7 +6,7 @@ import time
 app = Flask(__name__)
 
 
-@app.route('/chatbot/webhook/', methods=['POST'])
+@app.route('/chatbot/webhook/', methods=['POST', 'GET'])
 def webhook():
 
     data = request.json
